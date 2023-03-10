@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Conversor de Medidas</title>
 </head>
 <body>
-
+<h1 style="text-align: center; margin:12px;">Calculadora con cinco unidades de Medida</h1>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     
