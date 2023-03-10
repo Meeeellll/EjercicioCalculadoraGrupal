@@ -85,26 +85,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
+    <title>Conversor de unidades de medida</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
-  <body  class="p-3 m-0 border-0 bd-example bd-example-cols">
+  <body  >
 
 
-  <h1>CONVERTIDOR DE  UNIDADES </h1>
+<h1 class="text-center">Conversor de Longitud</h1>
     <!-- Example Code -->
     
-  <div class="container px-4 text-center">
-      <div class="row gx-5">
-        <div class="col">
-            <div class="p-3">TIEMPO</div>
-          <form method="post">
-            <label>Cantidad de tiempo:</label>
-             <input type="number" name="cantidad_tiempo">
+  <div class="container">
+    
 
-             <label>Unidad actual:</label>
-            <select name="unidad_actual">
+            <div class="">TIEMPO</div>
+          
+         
+
+          <form method="post" class="">
+
+          <div class="row mt-4">
+            <div class="col-sm-4">
+                <div>
+            <label   class="form-label">Cantidad de tiempo:</label>
+             <input class="form-control form-control-lg"type="number" name="cantidad_tiempo">
+                </div>
+
+            </div>
+           <div class="col-sm-4">
+             <labe  class="form-label">Unidad actual:</label> 
+            <select name="unidad_actual"class="form-select">
             <option value="segundos">Segundos</option>
             <option value="minutos">Minutos</option>
             <option value="horas">Horas</option>
@@ -115,9 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="decada">Decada</option>
             <option value="siglo">Siglo</option>
             </select>
-
-            <label>Unidad deseada:</label>
-             <select name="unidad_deseada">
+            </div>
+                <div class="col-sm-4">
+            <label  class="form-label lg-3">Unidad deseada:</label>
+             <select class="form-select w-3" name="unidad_deseada">
                 <option value="segundos">Segundos</option>
                 <option value="minutos">Minutos</option>
                 <option value="horas">Horas</option>
@@ -128,17 +139,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="decada">Decada</option>
                 <option value="siglo">Siglo</option>
              </select>
-
-            <input type="submit" value="Convertir">
-
+                     </div>
+           
+        </div>  
+        <div class="row mt-4">
+            <div class="col-sm-6">
+            <input class="btn btn-primary w-100 py-4" type="submit" value="Convertir">
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="resultado" class="form-label">RESULTADO:</label>
             <?php if (isset($resultado)) { ?>
-        <input type="text" name="resultado" value="<?php echo $cantidad_tiempo . ' ' . $unidad_actual . ' son ' .round( $resultado,2) . ' ' . $unidad_deseada; ?>" readonly>
+        <input class="form-control form-control-lg" type="text" name="resultado" value="<?php echo $cantidad_tiempo . ' ' . $unidad_actual . ' son ' .round( $resultado,2) . ' ' . $unidad_deseada; ?>" readonly>
     <?php } ?>
+          </div>
+            </div>
+         </div>
      
      </form>
-        </div>
-      </div>
-    </div>
+   
+    
  
 </body>
 </html>
