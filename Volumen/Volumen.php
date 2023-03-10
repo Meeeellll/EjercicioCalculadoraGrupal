@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="container-fluid">
     
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="./Volumen.php">Volumen</a>
-        <a class="nav-link" href="../longitud.php">Longitud</a>
-        <a class="nav-link" href="#">Pricing</a>
+    <div class="navbar-nav" >
+        <a class="nav-link " aria-current="page"style="padding :5px 30px;  font-size:  29px;" href="./Volumen.php">Volumen</a>
+        <a class="nav-link" style="padding :5px 30px; font-size:  29px;" href="../Longitud/Longitud.php">Longitud</a>
+        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; " href="#">Tiempo</a>
       </div>
     </div>
   </div>
