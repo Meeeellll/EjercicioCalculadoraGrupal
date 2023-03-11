@@ -1,33 +1,19 @@
 <?php
-//require('../Menu.php'); 
-require_once './UnidadLongitud.php';
-require_once ('./Milimetros.php');
-require_once ('./Centimetros.php');
-require_once ('./Decimetro.php');
-require_once ('./Metros.php');
-require_once ('./Decametros.php');
-require_once ('./Hectometros.php');
-require_once ('./Kilometros.php');
-include 'longitudCalculos.php';
+ include 'calculoMoneda.php';
 
-
- 
  if(isset($_POST['convertir'])){
-    //obtener valores
-    $valor = $_POST['valor'];
-    $desde = $_POST['desde'];
-    $hasta = $_POST['hasta'];
- }
+    
+    $cant = $_POST['cant'];
+    $De = $_POST['De'];
+    $A = $_POST['A'];
   
 
-  $calculoDesde = convertir_a_metros($valor, $desde);
-  $calculoHasta = convertir_desde_metros($calculoDesde,$hasta);
-    $resultado = ($calculoHasta);
-    //$resultado = $calculoHasta;
+    $calculoDe = convertir_de_dolar($cant, $De);
+   $calculoA = convertir_a_dolar($calculoDe,$A);
+    $resultado = number_format($calculoA,2);
+    
+}
 
-
-
- 
   
  ?> 
 <!DOCTYPE html>
@@ -41,8 +27,7 @@ include 'longitudCalculos.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
-
-    <title>Conversor de unidades de medida</title>
+    <title>Conversor de Medidas</title>
 </head>
 <body>
 <h1 style="text-align: center; margin:12px;">Calculadora con cinco unidades de Medida</h1>
@@ -50,58 +35,59 @@ include 'longitudCalculos.php';
   <div class="container-flex" style="justify-content: center;">
     
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav" >
-      <a class="nav-link " aria-current="page"style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Volumen/Volumen.php">Volumen</a>
+    <div class="navbar-nav" >
+    <a class="nav-link " aria-current="page"style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Volumen/Volumen.php">Volumen</a>
         <a class="nav-link" style="padding :5px 30px; font-size:  29px; font-family: 'Tilt Neon', cursive;" href="../Longitud/Longitud.php">Longitud</a>
-        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../tiempophp.php">Tiempo</a>
+        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Tiempophp.php">Tiempo</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../moneda.php">Moneda</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="#">Otro</a>
       </div>
     </div>
   </div>
 </nav>
-<h1 class="text-center">Conversor de Longitud</h1>
+<body>
+<h1 class="text-center">Conversor de Moneda</h1>
     <div class="container">
         <form  method="POST">
         <div class="row mt-4">
             <div class="col-sm-4">
                 <div>
-                    <label for="valor" class="form-label">Valor:</label>
-                    <input type="number" name="valor" class="form-control" value="">
+                    <label for="cant" class="form-label">Cantidad:</label>
+                    <input type="number" name="cant" class="form-control" value="">
                 </div>
 
             </div>
            
                 <div class="col-sm-4">
-                    <label for="desde" class="form-label">Desde:</label> 
+                    <label for="De" class="form-label">De:</label> 
                     
-                    <select class="form-select" name="desde">  
+                    <select class="form-select" name="De">  
                         
-                            <option value="">--Selecciona un valor--</option>                       
-                            <option value="Milimetro" >Milímetro</option>
-                            <option value="Centimetro" >Centímetro</option>
-                            <option value="Decimetro" >Decímetro</option>
-                            <option value="Metro" >Metro</option>
-                            <option value="Decametro" >Decámetro</option>
-                            <option value="Hectometro" >Hectómetro</option>
-                            <option value="Kilometro" >Kilómetro</option>
+                    <option value="">--Selecciona un tipo de Moneda--</option>                       
+                            <option value="Dolar">Dolar</option>
+                            <option value="Quetzal">Quetzal</option>
+                            <option value="Lempira">Lempira</option>
+                            <option value="Euro">Euro</option>
+                            <option value="Peso">Peso Mexicano</option>
+                            <option value="Colon">Colon Costarricense</option>
+                            <option value="Cordoba">Cordoba</option>
                     </select>
                 
                 
                 </div>
                 <div class="col-sm-4">
-                    <label for="hasta" class="form-label">Hasta:</label> 
+                    <label for="A" class="form-label">A:</label> 
                         
-                    <select class="form-select" name="hasta">
+                    <select class="form-select" name="A">
                        
-                    <option value="">--Selecciona un valor--</option>                       
-                            <option value="Milimetro" >Milímetro</option>
-                            <option value="Centimetro" >Centímetro</option>
-                            <option value="Decimetro" >Decímetro</option>
-                            <option value="Metro" >Metro</option>
-                            <option value="Decametro" >Decámetro</option>
-                            <option value="Hectometro" >Hectómetro</option>
-                            <option value="Kilometro" >Kilómetro</option>
+                    <option value="">--Selecciona un tipo de Moneda--</option>                       
+                            <option value="Dolar">Dolar</option>
+                            <option value="Quetzal">Quetzal</option>
+                            <option value="Lempira">Lempira</option>
+                            <option value="Euro">Euro</option>
+                            <option value="Peso">Peso Mexicano</option>
+                            <option value="Colon">Colon Costarricense</option>
+                            <option value="Cordoba">Cordoba</option>
                         </select>              
                 </div>
            
