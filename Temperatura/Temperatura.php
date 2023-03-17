@@ -51,7 +51,7 @@ if (isset($_POST['temperatura']) && isset($_POST['unidad'])) {
 
     <h1 style="text-align:center">Conversor de Temperatura</h1>
     <div class="container">
-<form action="indTemp.php" method="POST">
+<form action="CalculosTemp.php" method="POST">
     <div class="row mt-4 ">
   
        <div class="col-sm-6">
