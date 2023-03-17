@@ -1,7 +1,5 @@
 <?php
 
-include ('./Moneda.php');
-
 class Quetzal implements UnidadMoneda {
      public $cant;
   

@@ -14,13 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $A = $_POST['A'];
 
   $De_obj = new $De($cant);
-  $resultado = $De_obj->convertirA(new $A(2), $cant);
+  $resultado = $De_obj->convertirA(new $A(0), $cant);
 } else {
   $cant = '';
   $De = 'Dolar';
   $A = 'Dolar';
   $resultado = '';
 } 
+
 ?>
 
 <!DOCTYPE html>

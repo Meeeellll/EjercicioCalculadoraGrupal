@@ -1,8 +1,5 @@
 <?php
 
-include ('./Moneda.php');
-
-
 class Peso implements UnidadMoneda {
      public $cant;
   
