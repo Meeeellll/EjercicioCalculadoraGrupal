@@ -1,80 +1,75 @@
 <?php
+//En este código se ha aplicado el principio SOLID de responsabilidad única, 
+//extrayendo la funcionalidad de conversión de tiempo en una clase separada 
+//llamada TiempoConverter. De esta forma
+class TiempoConverter {
+    public function convertirTiempo($cantidad_tiempo, $unidad_actual, $unidad_deseada) {
+        // Convertir tiempo a segundos
+        $segundos = $this->convertirASegundos($cantidad_tiempo, $unidad_actual);
+
+        // Convertir segundos a unidad deseada
+        $resultado = $this->convertirDesdeSegundos($segundos, $unidad_deseada);
+
+        return $resultado;
+    }
+
+    private function convertirASegundos($cantidad_tiempo, $unidad_actual) {
+        switch ($unidad_actual) {
+            case 'segundos':
+                return $cantidad_tiempo;
+            case 'minutos':
+                return $cantidad_tiempo * 60;
+            case 'horas':
+                return $cantidad_tiempo * 60 * 60;
+            case 'dias':
+                return $cantidad_tiempo * 60 * 60 * 24;
+            case 'semana':
+                return $cantidad_tiempo * 60 * 60 * 24 * 7;
+            case 'mes':
+                return $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243;
+            case 'anio':
+                return $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12 ;
+            case 'decada':
+                return $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12*10 ;
+            case 'siglo':
+                return $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12*10*10 ;
+        }
+    }
+
+    private function convertirDesdeSegundos($segundos, $unidad_deseada) {
+        switch ($unidad_deseada) {
+            case 'segundos':
+                return $segundos;
+            case 'minutos':
+                return $segundos / 60;
+            case 'horas':
+                return $segundos / 60 / 60;
+            case 'dias':
+                return $segundos / 60 / 60 / 24;
+            case 'semana':
+                return $segundos / 60 / 60 / 24 / 7;
+            case 'mes':
+                return $segundos / 60 / 60 / 24 / 7 /4.345243;
+            case 'anio':
+                return $segundos / 60 / 60 / 24 / 7 /4.345243 /12 ;
+            case 'decada':
+                return $segundos / 60 / 60 / 24 / 7 /4.345243 /12/10;
+            case 'siglo':
+                return $segundos / 60 / 60 / 24 / 7 /4.345243 /12 /10/10;
+        }
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtener valores del formulario
     $cantidad_tiempo = $_POST['cantidad_tiempo'];
     $unidad_actual = $_POST['unidad_actual'];
     $unidad_deseada = $_POST['unidad_deseada'];
-   // $resultado= $_POST['resultado'];
 
-    // Convertir tiempo a segundos
-    switch ($unidad_actual) {
-        case 'segundos':
-            $segundos = $cantidad_tiempo;
-            break;
-        case 'minutos':
-            $segundos = $cantidad_tiempo * 60;
-            break;
-        case 'horas':
-            $segundos = $cantidad_tiempo * 60 * 60;
-            break;
-        case 'dias':
-            $segundos = $cantidad_tiempo * 60 * 60 * 24;
-            break;
-            case 'semana':
-                $segundos = $cantidad_tiempo * 60 * 60 * 24 * 7;
-             break;
-         case 'mes':
-            $segundos = $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243;
-            break;
-         case 'anio':
-            $segundos = $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12 ;
-             break;
-         case 'decada':
-            $segundos = $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12*10 ;
-             break;
-        case 'siglo':
-            $segundos = $cantidad_tiempo * 60 * 60 * 24 * 7* 4.345243 *12*10*10 ;
-             break;
-    }
-
-    // Convertir segundos a unidad deseada
-    switch ($unidad_deseada) {
-        case 'segundos':
-            $resultado = $segundos;
-            break;
-        case 'minutos':
-            $resultado = $segundos / 60;
-            break;
-        case 'horas':
-            $resultado = $segundos / 60 / 60;
-            break;
-        case 'dias':
-            $resultado = $segundos / 60 / 60 / 24;
-            break;
-            case 'semana':
-                $resultado = $segundos / 60 / 60 / 24 / 7;
-             break;
-        case 'mes':
-                $resultado = $segundos / 60 / 60 / 24 / 7 /4.345243;
-             break;
-        case 'anio':
-                $resultado = $segundos / 60 / 60 / 24 / 7 /4.345243 /12 ;
-             break; 
-             case 'decada':
-                $resultado = $segundos / 60 / 60 / 24 / 7 /4.345243 /12/10;
-             break; 
-             case 'siglo':
-                $resultado = $segundos / 60 / 60 / 24 / 7 /4.345243 /12 /10/10;
-             break;    
-    }
-
-
-
-    // Imprimir resultado
-   // echo "$cantidad_tiempo $unidad_actual son $resultado $unidad_deseada.";
-    
-   
+    $tiempoConverter = new TiempoConverter();
+    $resultado = $tiempoConverter->convertirTiempo($cantidad_tiempo, $unidad_actual, $unidad_deseada);
 }
+
 ?>
      
 
