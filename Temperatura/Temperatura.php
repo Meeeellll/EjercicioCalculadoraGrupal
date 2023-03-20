@@ -16,7 +16,7 @@ if (isset($_POST['temperatura']) && isset($_POST['unidad'])) {
     }
   }
   
-
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +43,8 @@ if (isset($_POST['temperatura']) && isset($_POST['unidad'])) {
         <a class="nav-link" style="padding :5px 30px; font-size:  29px; font-family: 'Tilt Neon', cursive;" href="../Longitud/longitud.php">Longitud</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Tiempophp.php">Tiempo</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Moneda/Moneda.php">Moneda</a>
-        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Masa.php">Masa</a>
-        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Temperatura/Temperatura.php">Temperatura</a>
+        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Masa/Masa.php">Masa</a>
+        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="#">Temperatura</a>
       </div>
     </div>
   </div>

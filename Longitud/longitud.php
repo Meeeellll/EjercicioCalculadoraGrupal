@@ -4,7 +4,7 @@
  if(isset($_POST['convertir'])){
     //obtener valores
     $valor = $_POST['valor'];
-    $desde = $_POST['desde'];
+    $desde = $_POST['desde']; 
     $hasta = $_POST['hasta'];
    
   
@@ -46,7 +46,7 @@
         <a class="nav-link" style="padding :5px 30px; font-size:  29px; font-family: 'Tilt Neon', cursive;" href="#">Longitud</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Tiempophp.php">Tiempo</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Moneda/Moneda.php">Moneda</a>
-        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Masa.php">Masa</a>
+        <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Masa/Masa.php">Masa</a>
         <a class="nav-link" style="padding :5px 30px;  font-size:  29px; font-family: 'Tilt Neon', cursive; " href="../Temperatura/Temperatura.php">Temperatura</a>
       </div>
     </div>
