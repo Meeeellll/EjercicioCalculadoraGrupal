@@ -49,4 +49,3 @@ class Quetzal implements UnidadMoneda {
 }
   
 ?>
-?>

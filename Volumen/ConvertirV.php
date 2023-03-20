@@ -36,13 +36,15 @@ class UnidadesVolumen {
 
     public function convertirUnidad($valor, $unidad_origen, $unidad_destino) {
         if (!array_key_exists($unidad_origen, $this->unidades) || !array_key_exists($unidad_destino, $this->unidades)) {
-            throw new Exception('Unidad de volumen inválida');
+            echo 'Unidad de volumen inválida';
+        } else{
+            $valor_en_metros_cubicos = $valor * $this->unidades[$unidad_origen];
+            $valor_en_unidad_destino = $valor_en_metros_cubicos / $this->unidades[$unidad_destino];
+
+            return $valor_en_unidad_destino;
         }
 
-        $valor_en_metros_cubicos = $valor * $this->unidades[$unidad_origen];
-        $valor_en_unidad_destino = $valor_en_metros_cubicos / $this->unidades[$unidad_destino];
-
-        return $valor_en_unidad_destino;
+        
     }
 }
 

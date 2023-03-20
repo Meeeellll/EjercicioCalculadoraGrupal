@@ -50,4 +50,3 @@ class Lempira implements UnidadMoneda {
 }
   
 ?>
-?>
