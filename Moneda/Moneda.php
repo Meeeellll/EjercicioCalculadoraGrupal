@@ -1,26 +1,5 @@
 <?php
-include_once 'UnidadMoneda.php';
-include_once 'Lempira.php';
-include_once 'Euro.php';
-include_once 'Dolar.php';
-include_once 'Peso.php';
-include_once 'Quetzal.php';
-include_once 'Cordoba.php';
-include_once 'Colon.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $cant = $_POST['cant'];
-  $De = $_POST['De'];
-  $A = $_POST['A'];
-
-  $De_obj = new $De($cant);
-  $resultado = $De_obj->convertirA(new $A(0), $cant);
-} else {
-  $cant = '';
-  $De = 'Dolar';
-  $A = 'Dolar';
-  $resultado = '';
-} 
+include_once 'currencyConverter.php';
 
 ?>
 
@@ -69,26 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="form-label">De:</label>
                     <select name="De" class="form-select">
                         <option value=" ">--Selecciona un tipo de moneda-</option>
-                        <option value="Quetzal" <?= $De === 'Quetzal' ? 'selected' : '' ?>>Quetzal</option>
-                        <option value="Cordoba" <?= $De === 'Cordoba' ? 'selected' : '' ?>>Cordoba</option>
-                        <option value="Colon" <?= $De === 'Colon' ? 'selected' : '' ?>>Colon</option>
-                        <option value="Euro" <?= $De === 'Euro' ? 'selected' : '' ?>>Euro</option>
-                        <option value="Dolar" <?= $De === 'Dolar' ? 'selected' : '' ?>>Dolar</option>
-                        <option value="Lempira" <?= $De === 'Lempira' ? 'selected' : '' ?>>Lempira</option>
-                        <option value="Peso" <?= $De === 'Peso' ? 'selected' : '' ?>>Peso</option>
+                        <option value="Quetzal" id="Quetzal" name="Quetzal" <?= $De === 'Quetzal' ? 'selected' : '' ?>>Quetzal</option>
+                        <option value="Cordoba" id="Cordoba" name= "Cordoba" <?= $De === 'Cordoba' ? 'selected' : '' ?>>Cordoba</option>
+                        <option value="Colon" id="Colon" name="Colon" <?= $De === 'Colon' ? 'selected' : '' ?>>Colon Costarricense</option>
+                        <option value="Euro" id="Euro" name="Euro"<?= $De === 'Euro' ? 'selected' : '' ?>>Euro</option>
+                        <option value="Dolar" id="Dolar" name="Dolar" <?= $De === 'Dolar' ? 'selected' : '' ?>>Dolar</option>
+                        <option value="Lempira" id="Lempira" name="Lempira" <?= $De === 'Lempira' ? 'selected' : '' ?>>Lempira</option>
+                        <option value="Peso" id="Peso" name="Peso" <?= $De === 'Peso' ? 'selected' : '' ?>>Peso Mexicano</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">A:</label>
                     <select name="A" class="form-select">
                         <option value="" selected>--Selecciona un tipo de moneda--</option>
-                        <option value="Quetzal" <?= $A === 'Quetzal' ? 'selected' : '' ?>>Quetzal</option>
-                        <option value="Cordoba" <?= $A === 'Cordoba' ? 'selected' : '' ?>>Cordoba</option>
-                        <option value="Colon" <?= $A === 'Colon' ? 'selected' : '' ?>>Colon</option>
-                        <option value="Euro" <?= $A === 'Euro' ? 'selected' : '' ?>>Euro</option>
-                        <option value="Dolar" <?= $A === 'Dolar' ? 'selected' : '' ?>>Dolar</option>
-                        <option value="Lempira" <?= $A === 'Lempira' ? 'selected' : '' ?>>Lempira</option>
-                        <option value="Peso" <?= $A === 'Peso' ? 'selected' : '' ?>>Peso</option>
+                        <option value="Quetzal"id="Quetzal" name="Quetzal" <?= $A === 'Quetzal' ? 'selected' : '' ?>>Quetzal</option>
+                        <option value="Cordoba" id="Cordoba" name="Cordoba" <?= $A === 'Cordoba' ? 'selected' : '' ?>>Cordoba</option>
+                        <option value="Colon" id="Colon" name="Colon" <?= $A === 'Colon' ? 'selected' : '' ?>>Colon</option>
+                        <option value="Euro" id="Euro" name="Euro" <?= $A === 'Euro' ? 'selected' : '' ?>>Euro</option>
+                        <option value="Dolar" id="Dolar" name="Dolar" <?= $A === 'Dolar' ? 'selected' : '' ?>>Dolar</option>
+                        <option value="Lempira" id="Lempira" name="Lempira"  <?= $A === 'Lempira' ? 'selected' : '' ?>>Lempira</option>
+                        <option value="Peso" id="Peso" name="Peso" <?= $A === 'Peso' ? 'selected' : '' ?>>Peso</option>
                     </select>
                 </div>
             </div>
@@ -97,8 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit" class="btn btn-primary w-100 py-4">Convertir</button>
                 </div>
                 <div class="col-sm-6">
-                    <label for="resultado" class="form-label">RESULTADO:</label>
-                    <input <?php if (isset($resultado)) ?> value="<?php echo $resultado ?>" class="form-control" />
+                    <label for="result" class="form-label">RESULTADO:</label>
+                    <input <?php if (isset($result)) ?> value="<?php echo $result ?>" class="form-control" />
                 </div>
             </div>
         </form>
