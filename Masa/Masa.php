@@ -62,6 +62,9 @@
 
         <div class="col-sm-6">
          <?php
+
+         // Al instanciar el objeto se hace desde las clases hijas
+         
         require_once "MasaPH.php";
 	   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$gramo = new Gramo($_POST['gramos']);
