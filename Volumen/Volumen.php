@@ -1,27 +1,7 @@
-<?php
-require_once 'UnidadVolumen.php';
-require_once 'KmCubicos.php';
-require_once 'HmCubicos.php';
-require_once 'DamCubicos.php';
-require_once 'MCubicos.php';
-require_once 'DmCubicos.php';
-require_once 'CmCubicos.php';
-require_once 'MmCubicos.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $valor = $_POST['valor'];
-  $unidad_origen = $_POST['unidad_origen'];
-  $unidad_destino = $_POST['unidad_destino'];
-
-  $unidad_origen_obj = new $unidad_origen($valor);
-  $resultado = $unidad_origen_obj->convertirA(new $unidad_destino(0), $valor);
-} else {
-  $valor = '';
-  $unidad_origen = 'KmCubicos';
-  $unidad_destino = 'KmCubicos';
-  $resultado = '';
-}
+<?php 
+    include_once 'ConvertirV.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h1 class="text-center">Conversor de Volumen</h1>
     <div class="container">
-        <form method="POST">
+        <form method="POST" action="Volumen.php">
             <div class="row mt-4">
                 <div class="col-sm-4">
                     <div>
@@ -68,26 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="form-label">Unidad de origen:</label>
                     <select name="unidad_origen" class="form-select">
                         <option value=" ">--Selecciona un valor--</option>
-                        <option value="KmCubicos" <?= $unidad_origen === 'KmCubicos' ? 'selected' : '' ?>>Kilómetros cúbicos</option>
-                        <option value="HmCubicos" <?= $unidad_origen === 'HmCubicos' ? 'selected' : '' ?>>Hectómetros cúbicos</option>
-                        <option value="DamCubicos" <?= $unidad_origen === 'DamCubicos' ? 'selected' : '' ?>>Decámetros cúbicos</option>
-                        <option value="MCubicos" <?= $unidad_origen === 'MCubicos' ? 'selected' : '' ?>>Metros cúbicos</option>
-                        <option value="DmCubicos" <?= $unidad_origen === 'DmCubicos' ? 'selected' : '' ?>>Decímetros cúbicos</option>
-                        <option value="CmCubicos" <?= $unidad_origen === 'CmCubicos' ? 'selected' : '' ?>>Centímetros cúbicos</option>
-                        <option value="MmCubicos" <?= $unidad_origen === 'MmCubicos' ? 'selected' : '' ?>>Milímetros cúbicos</option>
+                        <option value="km3" id="km3" name="km3" <?= $unidad_origen === 'km3' ? 'selected' : '' ?>>Kilómetros cúbicos</option>
+                        <option value="hm3" id="hm3" name="hm3" <?= $unidad_origen === 'hm3' ? 'selected' : '' ?>>Hectómetros cúbicos</option>
+                        <option value="dam3" id="dam3" name="dam3" <?= $unidad_origen === 'dam3' ? 'selected' : '' ?>>Decámetros cúbicos</option>
+                        <option value="m3" id="m3" name="m3" <?= $unidad_origen === 'm3' ? 'selected' : '' ?>>Metros cúbicos</option>
+                        <option value="dm3" id="dm3" name="dm3" <?= $unidad_origen === 'dm3' ? 'selected' : '' ?>>Decímetros cúbicos</option>
+                        <option value="cm3" id="cm3" name="cm3" <?= $unidad_origen === 'cm3' ? 'selected' : '' ?>>Centímetros cúbicos</option>
+                        <option value="mm3" id="mm3" name="mm3" <?= $unidad_origen === 'mm3' ? 'selected' : '' ?>>Milímetros cúbicos</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
                     <label class="form-label">Unidad de destino:</label>
                     <select name="unidad_destino" class="form-select">
                         <option value="" selected>--Selecciona un valor--</option>
-                        <option value="KmCubicos" <?= $unidad_destino === 'KmCubicos' ? 'selected' : '' ?>>Kilómetros cúbicos</option>
-                        <option value="HmCubicos" <?= $unidad_destino === 'HmCubicos' ? 'selected' : '' ?>>Hectómetros cúbicos</option>
-                        <option value="DamCubicos" <?= $unidad_destino === 'DamCubicos' ? 'selected' : '' ?>>Decámetros cúbicos</option>
-                        <option value="MCubicos" <?= $unidad_destino === 'MCubicos' ? 'selected' : '' ?>>Metros cúbicos</option>
-                        <option value="DmCubicos" <?= $unidad_destino === 'DmCubicos' ? 'selected' : '' ?>>Decímetros cúbicos</option>
-                        <option value="CmCubicos" <?= $unidad_destino === 'CmCubicos' ? 'selected' : '' ?>>Centímetros cúbicos</option>
-                        <option value="MmCubicos" <?= $unidad_destino === 'MmCubicos' ? 'selected' : '' ?>>Milímetros cúbicos</option>
+                        <option value="km3" id="km3" name="km3" <?= $unidad_destino === 'km3' ? 'selected' : '' ?>>Kilómetros cúbicos</option>
+                        <option value="hm3" id="hm3" name="hm3" <?= $unidad_destino === 'hm3' ? 'selected' : '' ?>>Hectómetros cúbicos</option>
+                        <option value="dam3" id="dam3" name="dam3" <?= $unidad_destino === 'dam3' ? 'selected' : '' ?>>Decámetros cúbicos</option>
+                        <option value="m3" id="m3" name="m3" <?= $unidad_destino === 'm3' ? 'selected' : '' ?>>Metros cúbicos</option>
+                        <option value="dm3" id="dm3" name="dm3" <?= $unidad_destino === 'dm3' ? 'selected' : '' ?>>Decímetros cúbicos</option>
+                        <option value="cm3" id="cm3" name="cm3" <?= $unidad_destino === 'cm3' ? 'selected' : '' ?>>Centímetros cúbicos</option>
+                        <option value="mm3" id="mm3" name="mm3" <?= $unidad_destino === 'mm3' ? 'selected' : '' ?>>Milímetros cúbicos</option>
                     </select>
                 </div>
             </div>
@@ -103,5 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
+    <?php 
+    echo "Unidad de origen: " . $unidad_origen;
+    echo "<br> Unidad de destino: " . $unidad_destino;
+    echo "<br> Valor: " . $valor;
+    echo "<br> Resultado: " . $resultado;
+    ?>
 </body>
 </html>
