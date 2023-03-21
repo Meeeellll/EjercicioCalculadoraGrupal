@@ -8,7 +8,7 @@
     $hasta = $_POST['hasta'];
    
   
-    //instanciar de forma decuada
+    //instancia a partir de la clase hija
    $objeto = new Longitud();
    $calculoDesde= $objeto->convertir_a_metros($valor, $desde);
    $resultado = $objeto->convertir_desde_metros($calculoDesde,$hasta);

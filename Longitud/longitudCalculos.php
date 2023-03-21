@@ -1,9 +1,12 @@
 <?php 
 
-
+//Conversor de longitud con el suo de clases abstractas, 
+//herencia: ya que la clase abstracta UnidadMedida hereda a Longitud;
+//y el principio Liskov,el cual se implementa al instanciar el objeto a traves de las clases hijas
+// y no mediante la clase base
 abstract class UnidadMedida{
     
-    //abstract public function convertir_a_metros($valor, $unidad_desde);
+    abstract public function convertir_a_metros($valor, $unidad_desde);
     abstract public function convertir_desde_metros($valor, $unidad_hasta);
     abstract public function imprimirResultado($resultado);
    
